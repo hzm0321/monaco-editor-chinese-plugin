@@ -1,34 +1,19 @@
-# monaco-editor-locales-plugin
-A webpack plugin for monaco-editor locales setting
-
-[https://github.com/xxxxst/monaco-editor-locales-plugin](https://github.com/xxxxst/monaco-editor-locales-plugin)
-
-<h2 align="center">Install</h2>
+# monaco-editor-chinese-plugin
 
 ```bash
-npm install --save-dev monaco-editor-locales-plugin
+npm install --save-dev monaco-editor-chinese-plugin
 ```
 
 <h2 align="center">Usage</h2>
 
 **webpack config**
 ```js
+const MonacoChinesePlugin = require('monaco-editor-chinese-plugin');
+
 module.exports = {
     ...
     plugins: [
-        new MonacoLocalesPlugin({
-            /**
-             * support languages list, .eg ["de"]
-             * embed language base on monaco-editor@0.14.6
-             * all available embed languages: de,es,fr,it,ja,ko,ru,zh-cn,zh-tw
-             * just add what you need to reduce the size
-             */
-            languages: [],
-            /**
-             * default language name, .eg "de"
-             * use function string to set dynamic, .eg "getLanguageSetting()"
-            */
-            defaultLanguage: "",
+        new MonacoChinesePlugin({
             //defaultLanguage: "getLanguageSetting()",
             /**
              * log on console if unmatched
@@ -43,40 +28,24 @@ module.exports = {
 }
 ```
 
-if the param "defaultLanguage" set as a function,it will be called at the monaco-editor library loaded.
+<h2 align="center">HzeroJs Usage</h2>
 
-therefore if the user want to change language,they need to refresh the page.
+**webpack config**
+```js
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const MonacoChinesePlugin = require('monaco-editor-chinese-plugin');
 
-html code usage:
-```html
-<html>
-    <head>
-    <script language="javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-
-    <script type="text/javascript">
-        //save data before refresh
-        $.cookie('language', "zh-cn");
-
-        //make sure that the function be declared before monaco-editor lib loaded
-        function getLanguageSetting(){
-            return $.cookie('language');
-        }
-    </script>
-
-    <!-- monaco-editor lib -->
-    <script language="javascript" src="./static/js/vendor.dll.js"></script>
-    ...
-    </head>
-</html>
+const config: IConfig = {
+  chainWebpack: (c) => {
+    c.plugin('monaco-editor-webpack-plugin').use(new MonacoWebpackPlugin({
+      languages: ['javascript', 'typescript', 'sql', 'json'],
+    }));
+    c.plugin('monaco-editor-chinese-plugin').use(new MonacoChinesePlugin({
+      logUnmatched: true,
+    }));
+    // ......
+  },
+  // 其余配置 ......
+};
+export default config;
 ```
-
-<h2>important</h2>
-This is not the best way to do it. Because this is a direct change to monaco-editor's source code-
-"monaco-editor/esm/vs/nls.js",
-
-## License
-
-[MIT ©xxxxst](LICENSE)
-
-Copyright (c) 2018-present, xxxxst
