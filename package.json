@@ -1,24 +1,24 @@
 {
-  "version": "0.0.1",
-  "_from": "monaco-editor-chinese-plugin@^0.0.1",
-  "_id": "monaco-editor-chinese-plugin@0.0.1",
+  "version": "0.0.3",
+  "_from": "monaco-editor-chinese-plugin@^0.0.3",
+  "_id": "monaco-editor-chinese-plugin@0.0.3",
   "_inBundle": false,
   "_location": "/monaco-editor-chinese-plugin",
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "monaco-editor-chinese-plugin@^0.0.1",
+    "raw": "monaco-editor-chinese-plugin@^0.0.3",
     "name": "monaco-editor-chinese-plugin",
     "escapedName": "monaco-editor-chinese-plugin",
-    "rawSpec": "^0.0.1",
+    "rawSpec": "^0.0.3",
     "saveSpec": null,
-    "fetchSpec": "^0.0.1"
+    "fetchSpec": "^0.0.3"
   },
   "_requiredBy": [
     "#DEV:/"
   ],
-  "_resolved": "https://registry.npmjs.org/monaco-editor-chinese-plugin/-/monaco-editor-chinese-plugin-0.0.1.tgz",
-  "_spec": "monaco-editor-chinese-plugin@^0.0.1",
+  "_resolved": "https://registry.npmjs.org/monaco-editor-chinese-plugin/-/monaco-editor-chinese-plugin-0.0.3.tgz",
+  "_spec": "monaco-editor-chinese-plugin@^0.0.3",
   "author": {
     "name": "hzm"
   },
@@ -28,9 +28,6 @@
   "bundleDependencies": false,
   "dependencies": {
 
-  },
-  "peerDependencies": {
-    "monaco-editor-nls": "*"
   },
   "deprecated": false,
   "description": "A webpack plugin for monaco-editor Chinese setting",
